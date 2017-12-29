@@ -6,6 +6,7 @@
 
 #fortune
 
+ip=`ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1' | grep -v '10.7.7.3'`
 
 echo ""
 echo "Running: "
@@ -50,6 +51,5 @@ echo " "
 echo "Online status:"
 status=`vpncheck`
 echo " $status"
-ip=`ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1' | grep -v '10.7.7.3'`
 echo " $ip"
 echo ""
