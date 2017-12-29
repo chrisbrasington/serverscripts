@@ -1,0 +1,20 @@
+#!/bin/sh
+file="$HOME/.config/staticip"
+
+if [ ! -f $file ]; then
+  echo "Static IP config file not found in $file"
+else
+
+  static=`cat $file`
+
+  #site='ipinfo.io/ip'
+  site='v4.ident.me'
+
+  ip=$(curl -s $site)
+
+  if [ "$static" == "$ip" ]; then
+    echo "VPN OFFLINE ($ip)"
+  else
+    echo "VPN Online ($ip masked $static)"
+  fi
+fi
