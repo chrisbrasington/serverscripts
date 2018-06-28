@@ -1,0 +1,18 @@
+#
+# ~/.bash_profile
+#
+
+[[ -f ~/.bashrc ]] && . ~/.bashrc
+
+ip=`ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1' | grep -v '10.7.7.3'`
+
+echo ""
+echo "Running: "
+
+service="Plex Media Server"
+if (( $(ps -ef | grep -v grep | grep "$service" | wc -l) > 0 ))
+then
+	echo " Plex - http://$ip:32400/web/index.html"
+fi
+
+echo ''
